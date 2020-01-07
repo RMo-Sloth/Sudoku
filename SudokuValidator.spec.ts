@@ -1,6 +1,6 @@
 import { SudokuValidator } from './SudokuValidator';
 
-fdescribe( 'SudokuValidator', () => {
+describe( 'SudokuValidator', () => {
   // NOTE: SudokuValidator should only check if the structural integrity is violated. NOT if the sudoku can be solved
 
   it( 'should validate if an empty 9x9 sudoku', () => {
