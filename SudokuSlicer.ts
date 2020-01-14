@@ -6,6 +6,8 @@ export abstract class SudokuSlicer {
   }
 
   abstract sliceRow( index: number ): string;
+  abstract sliceColumn( index: number ): string;
+  abstract sliceSquare( index: number ): string;
 }
 
 export class SudokuSlicer9x9 extends SudokuSlicer {
