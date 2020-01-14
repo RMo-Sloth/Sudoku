@@ -1,4 +1,4 @@
-import { SudokuSlicer9x9 } from './SudokuSlicer';
+import { Utility } from '../Utility';
 
 export class SudokuValidator {
   protected _sudoku;
@@ -39,7 +39,7 @@ export class SudokuValidator {
 class SudokuValidator9x9 extends SudokuValidator {
   constructor( sudoku: string ) {
     super( sudoku );
-    this._slicer = new SudokuSlicer9x9( this._sudoku );
+    this._slicer = Utility.slicer( this._sudoku );
   }
 
   protected validRows(): boolean {

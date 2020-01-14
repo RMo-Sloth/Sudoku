@@ -1,14 +1,12 @@
-import { SudokuValidator } from './SudokuValidator';
+import { Utility } from './utility/Utility';
 
 export class SudokuSolver {
   // abstract factory
   protected _sudoku: string;
-  protected _validator: SudokuValidator;
   protected _solver: SudokuSolver;
 
   constructor( sudoku: string ) {
     this._sudoku = sudoku;
-    this._validator = new SudokuValidator( sudoku );
   }
   solve( algorithm: string = 'recursive'): Array<string> {
     switch( algorithm ) {
@@ -24,7 +22,7 @@ class RecursiveSudokuSolver extends SudokuSolver {
   // uses a tree structure from composite
   private _solutions = [];
   solve(): Array<string> {
-    if( this._validator.validate() === false ) {
+    if( Utility.validate( this._sudoku ) === false ) {
       return this._solutions;
     }
   }
@@ -53,8 +51,8 @@ class RecursiveSudokuSolver extends SudokuSolver {
 
 class RecursiveSudokuComposite {
   private _sudokuState: string;
-  private parent: RecursiveSudokuComposite;
-  private children: Array<RecursiveSudokuComposite>;
+  private _parent: RecursiveSudokuComposite;
+  private _children: Array<RecursiveSudokuComposite>;
   // store as {1: RecursiveSudokuComposite, 2: RecursiveSudokuComposite, 3: null, etc... } ???
   constructor( sudoku: string ) {
     this._sudokuState = sudoku;
@@ -73,8 +71,8 @@ class RecursiveSudokuComposite {
 
 class RecursiveSudokuLeaf {
   private _sudokuState: string;
-  private parent: RecursiveSudokuComposite;
-  private children: Array<RecursiveSudokuComposite>;
+  private _parent: RecursiveSudokuComposite;
+  private _children: Array<RecursiveSudokuComposite>;
   // store as {1: RecursiveSudokuComposite, 2: RecursiveSudokuComposite, 3: null, etc... } ???
   constructor( sudoku: string ) {
     this._sudokuState = sudoku;

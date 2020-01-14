@@ -1,6 +1,6 @@
 import { SudokuSolver } from './SudokuSolver';
 
-fdescribe( 'SudokuSolver', () => {
+describe( 'SudokuSolver', () => {
   it( 'should return an empty array with an invalid sudoku', () => {
     let sudoku = '110000000000000000000000000000000000000000000000000000000000000000000000000000000';
     let solver = new SudokuSolver( sudoku );
