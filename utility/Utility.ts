@@ -1,6 +1,7 @@
 import { SudokuSlicer, SudokuSlicer9x9 } from './SudokuSlicer/SudokuSlicer';
 import{ SudokuValidator } from './SudokuValidator/SudokuValidator';
 import { SudokuMutator } from './SudokuMutator/SudokuMutator';
+import { SudokuTreeNode } from './SudokuTree/SudokuTree';
 // all utility classes should exclusively be called through this facade
 
 export class Utility {
@@ -15,9 +16,8 @@ export class Utility {
   public static mutate( sudoku, index, value ): string {
     return SudokuMutator.mutate( sudoku, index, value );
   }
-
-}
-// SudokuSolutionTree is higher level composite SolutionTreeUtility
-export class SolutionTree {
-  // build( sudoku: string ){} // returns top level composite
+  public static generateTree( sudoku: string ) {
+    // take extreme care not to process big trees
+    return new SudokuTreeNode( sudoku );
+  }
 }

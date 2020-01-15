@@ -1,6 +1,6 @@
 import { SudokuMutator } from './SudokuMutator';
 
-fdescribe( 'SudokuMutator', () => {
+describe( 'SudokuMutator', () => {
   it( 'be able to mutate the first value', () => {
     let sudoku = '000000000000000000000000000000000000000000000000000000000000000000000000000000000';
     let mutatedSudoku = '100000000000000000000000000000000000000000000000000000000000000000000000000000000';
