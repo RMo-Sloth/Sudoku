@@ -1,6 +1,6 @@
-import { Utility } from './utility/Utility';
+import { Utility } from '../../Utility';
 
-export class SudokuSolver {
+export abstract class SudokuSolver {
   // abstract factory
   protected _sudoku: string;
   protected _solver: SudokuSolver;
@@ -8,17 +8,18 @@ export class SudokuSolver {
   constructor( sudoku: string ) {
     this._sudoku = sudoku;
   }
-  solve( algorithm: string = 'recursive'): Array<string> {
-    switch( algorithm ) {
-      case 'recursive':
-        this._solver = new RecursiveSudokuSolver( this._sudoku );
-    }
-
-    return  this._solver.solve();
-  }
+  abstract solve();
+//   solve( algorithm: string = 'recursive'): Array<string> {
+//     switch( algorithm ) {
+//       case 'recursive':
+//         this._solver = new RecursiveSudokuSolver( this._sudoku );
+//     }
+//
+//     return  this._solver.solve();
+//   }
 }
 
-class RecursiveSudokuSolver extends SudokuSolver {
+export class RecursiveSudokuSolver extends SudokuSolver {
   // uses a tree structure from composite
   private _solutions = [];
   solve(): Array<string> {

@@ -64,7 +64,6 @@ class SudokuValidator9x9 extends SudokuValidator {
 
     return true;
   }
-
   protected validSquares(): boolean {
     let validCharacters = [ '1', '2', '3', '4', '5', '6', '7', '8', '9' ];
 

@@ -3,6 +3,7 @@ import{ SudokuValidator } from './SudokuValidator/SudokuValidator';
 import { SudokuMutator } from './SudokuMutator/SudokuMutator';
 import { SudokuTreeNode } from './SudokuTree/SudokuTree';
 // all utility classes should exclusively be called through this facade
+export { SudokuSlicer9x9 } from './SudokuSlicer/SudokuSlicer';
 
 export class Utility {
   public static slicer( sudoku: string ): SudokuSlicer {
