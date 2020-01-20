@@ -1,6 +1,6 @@
 import { RowCellSolver } from './RowCellSolver';
 
-fdescribe( 'RowCellSolver', () => {
+describe( 'RowCellSolver', () => {
 
   it( 'does not solve an empty sudoku', () => {
     let sudoku = '000000000000000000000000000000000000000000000000000000000000000000000000000000000';
