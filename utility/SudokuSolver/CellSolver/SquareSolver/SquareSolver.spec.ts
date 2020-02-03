@@ -1,6 +1,6 @@
-import { SquareCellSolver, SudokuCellPosition } from "./SquareSolver";
+import { SquareCellSolver } from "./SquareSolver";
 
-fdescribe( 'SquareSolver', () => {
+describe( 'SquareSolver', () => {
   it( 'does not solve an empty sudoku', () => {
     let sudoku = '000000000000000000000000000000000000000000000000000000000000000000000000000000000';
     let solver = new SquareCellSolver( sudoku );
@@ -27,19 +27,5 @@ fdescribe( 'SquareSolver', () => {
     let sudoku = '000023000000456000000789000000000000000000000000000000000000000000000000000000000';
     let solver = new SquareCellSolver( sudoku );
     expect( solver.solve( 4 ) ).toBe( 1 );
-  });
-});
-
-
-fdescribe( 'SudokuCellPosition', () => {
-  fdescribe( '.row', () => {
-    it( 'returns 0 for too low out of range values', () => {
-      let cellPosition = new SudokuCellPosition( 0 );
-      expect( cellPosition.row ).toBe( 0 );
-    });
-    it( 'returns 0 for too high out of range values', () => {
-      let cellPosition = new SudokuCellPosition( 82 );
-      expect( cellPosition.row ).toBe( 0 );
-    });
   });
 });
