@@ -10,7 +10,7 @@ export abstract class CellSolver {
     this._slicer = Utility.slicer(sudoku );
   }
 
-  abstract canSolve( index: number ): boolean;
+  // abstract canSolve( index: number ): boolean;
   abstract solve( index: number ): number;
 
 }
