@@ -9,8 +9,9 @@ export abstract class CellSolver {
     this._sudoku = sudoku;
     this._slicer = Utility.slicer( sudoku );
   }
-
-  // abstract canSolve( index: number ): boolean;
   abstract solve( index: number ): number;
-
+  
+  protected isAlreadySolved( cellIndex ): boolean {
+    return this._sudoku.charAt( cellIndex - 1 ) !== '0';
+  }
 }

@@ -1,4 +1,5 @@
 import { CellSolver } from '../CellSolver';
+import { Utility } from "../../../Utility";
 
 export class RowCellSolver extends CellSolver {
   private _row: string;
@@ -6,17 +7,23 @@ export class RowCellSolver extends CellSolver {
   constructor( sudoku: string ) {
     super( sudoku );
   }
+  public solve( cellIndex: number): number {
+    if( this.isAlreadySolved( cellIndex ) === true )
+      throw new Error('The cell you are trying to solve is already solved.');
 
-  canSolve( index: number ): boolean {
-    this._row = this._slicer.sliceRow( Math.ceil(index/9) );
-    return this._row.charAt( (index-1) % 9 ) === '0' && this._row.match(/0/g).length === 1;
+    let rowIndex = Utility.cellPosition( cellIndex ).row;
+    this._row = this._slicer.sliceRow( rowIndex );
+
+    if( this.hasOneUnsolvedCellInRow() === false )
+      return 0;
+
+    let i = 0;
+    while( this._row.includes( i.toString() ) )
+      i++;
+
+    return i;
   }
-  solve( index: number): number {
-    this._row = this._slicer.sliceRow( Math.ceil(index/9) );
-    for( let i=1; i<10; i++ ) {
-      if( this._row.includes( i.toString() ) === false )
-        return i;
-    }
-    return 0;
+  private hasOneUnsolvedCellInRow(): boolean {
+    return this._row.indexOf('0') === this._row.lastIndexOf('0');
   }
 }

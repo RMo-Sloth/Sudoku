@@ -10,7 +10,8 @@ export class SquareCellSolver extends CellSolver {
   public solve( cellIndex: number ): number {
     let squareIndex = Utility.cellPosition( cellIndex ).square;
     this._square = this._slicer.sliceSquare( squareIndex );
-
+    // TODO: test out of bounds / invalid index
+    // TODO: test isALreadySOlved ( see row for example )
     if( this.hasOneUnsolvedCellInSquare() === false )
       return 0;
 

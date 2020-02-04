@@ -17,7 +17,7 @@ export class SudokuTreeNode {
         }
       }
     } else {
-      console.log( this._sudoku );
+      // console.log( this._sudoku );
     }
   }
 
