@@ -4,7 +4,7 @@ export class SudokuCellPosition {
   private _column = 0;
   private _square = 0;
 
-  constructor( index: number ) {
+  public constructor( index: number ) {
     this._index = index;
     if( this.isOutOfBounds() === false ) {
       this.calculateRow();
@@ -13,13 +13,13 @@ export class SudokuCellPosition {
       this.calculateSquare();
     }
   }
-  get row(): number {
+  public get row(): number {
     return this._row;
   }
-  get column(): number {
+  public get column(): number {
     return this._column;
   }
-  get square(): number {
+  public get square(): number {
     return this._square;
   }
   private calculateRow(): void {
