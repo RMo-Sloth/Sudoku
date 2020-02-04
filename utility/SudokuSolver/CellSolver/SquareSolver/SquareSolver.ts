@@ -2,31 +2,26 @@ import { CellSolver } from "../CellSolver";
 import { Utility } from "../../../Utility";
 
 export class SquareCellSolver extends CellSolver {
-  private _square;
+  private _square: string;
 
   constructor( sudoku: string ) {
     super( sudoku );
-
-    let solver = Utility.slicer( this._sudoku );
-    this._square = solver.sliceSquare( 1 );
   }
+  public solve( cellIndex: number ): number {
+    let squareIndex = Utility.cellPosition( cellIndex ).square;
+    this._square = this._slicer.sliceSquare( squareIndex );
+    // TODO: test out of bounds / invalid index
+    // TODO: test isALreadySOlved ( see row for example )
+    if( this.hasOneUnsolvedCellInSquare() === false )
+      return 0;
 
-  canSolve( cellIndex: number ): boolean {
-    if( this.isSolvedCell( cellIndex ) )
-      return false;
+    let i = 0;
+    while( this._square.includes( i.toString() ) )
+      i++;
 
-    if( this.hasOneUnsolvedCellInSquare() )
-      return true;
-  }
-  solve( cellIndex: number ): number {
-    for( let i=1; i<10; i++ )
-      if( this._square.includes( i.toString() ) === false ) return i;
-  }
-  private isSolvedCell( cellIndex ): boolean {
-    return this._sudoku.charAt( cellIndex-1 ) !== '0';
+    return i;
   }
   private hasOneUnsolvedCellInSquare(): boolean {
     return this._square.indexOf('0') === this._square.lastIndexOf('0');
   }
-
 }

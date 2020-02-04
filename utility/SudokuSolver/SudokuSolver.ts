@@ -15,6 +15,6 @@ export class SudokuSolver { // facade
     return new RowCellSolver( this._sudoku );
   }
   squareCellSolver() {
-      return new SquareCellSolver( this._sudoku );
+    return new SquareCellSolver( this._sudoku );
   }
 }

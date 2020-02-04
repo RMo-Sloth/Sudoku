@@ -2,6 +2,7 @@ import { SudokuSlicer, SudokuSlicer9x9 } from './SudokuSlicer/SudokuSlicer';
 import{ SudokuValidator } from './SudokuValidator/SudokuValidator';
 import { SudokuMutator } from './SudokuMutator/SudokuMutator';
 import { SudokuTreeNode } from './SudokuTree/SudokuTree';
+import { SudokuCellPosition } from './CellPosition/SudokuCellPosition';
 // all utility classes should exclusively be called through this facade
 export { SudokuSlicer9x9 } from './SudokuSlicer/SudokuSlicer';
 
@@ -20,5 +21,8 @@ export class Utility {
   public static generateTree( sudoku: string ) {
     // take extreme care not to process big trees
     return new SudokuTreeNode( sudoku );
+  }
+  public static cellPosition( cellIndex: number ): SudokuCellPosition {
+    return new SudokuCellPosition( cellIndex );
   }
 }
